@@ -9,8 +9,6 @@ def letter_count(words):
         if char.isalpha():
             lower_char = char.lower()
             letters[lower_char] = letters.get(lower_char,0) + 1
-        else:
-            letters[char] = letters.get(char,0) + 1
     return letters
 
 def second(letters):
@@ -22,9 +20,15 @@ def second(letters):
 def sort_on(dict_list):
     return dict_list['count']
 
+def list_sorter(words):
+    return sorted(second(letter_count(words)), reverse=True, key=sort_on)
+
 def main():
-    words = "This is The Test STRIng"
-    print(sorted(second(letter_count(words)), reverse=True, key=sort_on))
+    words = "THis IS the TEST StrING"
+    task = sorted(second(letter_count(words)), reverse=True, key=sort_on)
+    for t in task:
+        if t['character'].isalpha():
+            print(f"{t['character']}: {t['count']}")
 
 if __name__ == "__main__":
     main()
